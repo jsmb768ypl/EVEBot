@@ -1433,12 +1433,12 @@ BUG - This is broken. It relies on the activatarget, there's no checking if they
 		        wait 10
 			}
 			Logger:Log["Debug: now check the ore hold is the active tab"]
-			elseif ${EVEWindow[Inventory](exists)} && !${EVEWindow[Inventory].ChildWindow[${MyShip.ID}, ShipGeneralMiningHold](exists)}
+			if ${EVEWindow[Inventory](exists)} && !${EVEWindow[Inventory].ChildWindow[${MyShip.ID}, ShipGeneralMiningHold](exists)}
 			{
 				Logger:Log["Debug: Lets make our ore hold the active window"]
             	EVEWindow[Inventory].ChildWindow[${MyShip.ID}, ShipGeneralMiningHold]:MakeActive
 			}
-			elseif ${EVEWindow[Inventory].ChildWindow[${MyShip.ID}, ShipGeneralMiningHold](exists)}
+			if ${EVEWindow[Inventory].ChildWindow[${MyShip.ID}, ShipGeneralMiningHold](exists)}
 			{
 				
 				if ${Ship.OreHoldFreeSpace} < ${Ship.OreHoldMinimumFreeSpace}
