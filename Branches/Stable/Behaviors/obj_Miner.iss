@@ -1425,9 +1425,22 @@ BUG - This is broken. It relies on the activatarget, there's no checking if they
 		}
 		else
 		{
-			if ${EVEWindow[Inventory].ChildWindow[${MyShip.ID}, ShipGeneralMiningHold](exists)}
+			Logger:Log["Debug: Lets check if the inventory window is open"]
+			if !${EVEWindow[Inventory](exists)}
 			{
-				call Inventory.ShipOreHold.Activate
+				echo "Opening Inventory..."
+		        EVE:Execute[OpenInventory]
+		        wait 10
+			}
+			Logger:Log["Debug: now check the ore hold is the active tab"]
+			elseif ${EVEWindow[Inventory](exists)} && !${EVEWindow[Inventory].ChildWindow[${MyShip.ID}, ShipGeneralMiningHold](exists)}
+			{
+				Logger:Log["Debug: Lets make our ore hold the active window"]
+            	EVEWindow[Inventory].ChildWindow[${MyShip.ID}, ShipGeneralMiningHold]:MakeActive
+			}
+			elseif ${EVEWindow[Inventory].ChildWindow[${MyShip.ID}, ShipGeneralMiningHold](exists)}
+			{
+				
 				if ${Ship.OreHoldFreeSpace} < ${Ship.OreHoldMinimumFreeSpace}
 				{
 					return TRUE
