@@ -1446,7 +1446,7 @@ BUG - This is broken. It relies on the activatarget, there's no checking if they
 					return TRUE
 				}
 			}
-			elseif ${Ship.CargoFreeSpace} < ${Ship.CargoMinimumFreeSpace} || ${MyShip.UsedCargoCapacity} > ${Config.Miner.CargoThreshold}
+			else ${Ship.CargoFreeSpace} < ${Ship.CargoMinimumFreeSpace} || ${MyShip.UsedCargoCapacity} > ${Config.Miner.CargoThreshold}
 			{
 				return TRUE
 			}
