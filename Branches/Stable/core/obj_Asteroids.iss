@@ -540,9 +540,9 @@ objectdef obj_Asteroids
 		if ${This.FieldEmpty}
 		{
 			Logger:Log["obj_Asteroids: No Asteroids within overview range"]
-			if ${Entity["GroupID = GROUP_ASTEROIDBELT"].Distance} < CONFIG_OVERVIEW_RANGE
+			if ${Entity["GroupID = 9"].Distance} < CONFIG_OVERVIEW_RANGE
 			{
-				This:MarkBeltAsEmpty["${Entity[GroupID = GROUP_ASTEROIDBELT].Name}"]
+				This:MarkBeltAsEmpty["${Entity[GroupID = 9].Name}"]
 			}
 			return FALSE
 		}
