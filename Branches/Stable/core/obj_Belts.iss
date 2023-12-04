@@ -34,9 +34,9 @@ objectdef obj_Belts inherits obj_BaseClass
 			beltsubstring:Set["ICE FIELD"]
 		}
 
-		EVE:QueryEntities[Belts, "GroupID = GROUP_ASTEROIDBELT && Name =- \"${beltsubstring}\""]
+		EVE:QueryEntities[Belts, "GroupID = 9 && Name =- \"${beltsubstring}\""]
 		*/
-		EVE:QueryEntities[beltIndex, "GroupID = GROUP_ASTEROIDBELT"]
+		EVE:QueryEntities[beltIndex, "GroupID = 9"]
 		if ${Config.Common.SortBeltsRandom}
 		{
 			This:Randomize[beltIndex]
