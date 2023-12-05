@@ -346,7 +346,7 @@ objectdef obj_Asteroids
 			do
 			{
 				variable string QueryStrPrefix
-				QueryStrPrefix:Set["CategoryID = ${This.AsteroidCategoryID} && Name =- \"${OreTypeIterator.Key}\""]
+				QueryStrPrefix:Set["CategoryID = 25 && Name =- \"${OreTypeIterator.Key}\""]
 				; This is intended to get the desired ore in the system before others do.  Its not
 				; intended to empty a given radius of asteroids
 				if ${Config.Miner.StripMine}
@@ -400,16 +400,16 @@ objectdef obj_Asteroids
 			{
 				if ${EntityIDForDistance} < 0
 				{
-					EVE:QueryEntities[AsteroidList_TotalIRTmp, "CategoryID = ${This.AsteroidCategoryID} && Distance < ${Ship.OptimalMiningRange}"]
+					EVE:QueryEntities[AsteroidList_TotalIRTmp, "CategoryID = 25 && Distance < ${Ship.OptimalMiningRange}"]
 				}
 				else
 				{
-					EVE:QueryEntities[AsteroidList_TotalIRTmp, "CategoryID = ${This.AsteroidCategoryID} && DistanceTo[${EntityIDForDistance}] < ${Math.Calc[${Ship.OptimalMiningRange} + 2000]}"]
+					EVE:QueryEntities[AsteroidList_TotalIRTmp, "CategoryID = 25 && DistanceTo[${EntityIDForDistance}] < ${Math.Calc[${Ship.OptimalMiningRange} + 2000]}"]
 				}
 			}
 			else
 			{
-				EVE:QueryEntities[AsteroidList_TotalIRTmp, "CategoryID = ${This.AsteroidCategoryID} && Distance < ${This.MaxTravelDistanceToAsteroid}"]
+				EVE:QueryEntities[AsteroidList_TotalIRTmp, "CategoryID = 25 && Distance < ${This.MaxTravelDistanceToAsteroid}"]
 			}
 
 			if ${Config.Miner.StripMine}
@@ -495,7 +495,7 @@ objectdef obj_Asteroids
 						if ${Target:First(exists)}
 							do
 							{
-								if ${AsteroidIterator.Value.CategoryID} == ${Asteroids.AsteroidCategoryID}
+								if ${AsteroidIterator.Value.CategoryID} == 25
 								{
 									if ${AsteroidIterator.Value.DistanceTo[${Target.Value.ID}]} > ${Math.Calc[${Ship.OptimalMiningRange} * 2]}
 									{
@@ -609,7 +609,7 @@ objectdef obj_Asteroids
 		if ${Target:First(exists)}
 		do
 		{
-			if ${Target.Value.CategoryID} == ${Asteroids.AsteroidCategoryID}
+			if ${Target.Value.CategoryID} == 25
 			{
 				AsteroidsLocked:Inc
 			}
