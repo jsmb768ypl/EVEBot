@@ -346,7 +346,9 @@ objectdef obj_Asteroids
 			do
 			{
 				variable string QueryStrPrefix
-				QueryStrPrefix:Set["CategoryID = 25 && Name =- \"${OreTypeIterator.Key}\""]
+				; below is commented out to try to find the issue with no astroids being found in the belt
+				;QueryStrPrefix:Set["CategoryID = 25 && Name =- \"${OreTypeIterator.Key}\""]
+				QueryStrPrefix:Set["CategoryID = 25"]
 				; This is intended to get the desired ore in the system before others do.  Its not
 				; intended to empty a given radius of asteroids
 				if ${Config.Miner.StripMine}
@@ -400,16 +402,22 @@ objectdef obj_Asteroids
 			{
 				if ${EntityIDForDistance} < 0
 				{
-					EVE:QueryEntities[AsteroidList_TotalIRTmp, "CategoryID = 25 && Distance < ${Ship.OptimalMiningRange}"]
+					; below is commented out to try to find the issue with no astroids being found in the belt
+					;EVE:QueryEntities[AsteroidList_TotalIRTmp, "CategoryID = 25 && Distance < ${Ship.OptimalMiningRange}"]
+					EVE:QueryEntities[AsteroidList_TotalIRTmp, "CategoryID = 25"]
 				}
 				else
 				{
-					EVE:QueryEntities[AsteroidList_TotalIRTmp, "CategoryID = 25 && DistanceTo[${EntityIDForDistance}] < ${Math.Calc[${Ship.OptimalMiningRange} + 2000]}"]
+					; below is commented out to try to find the issue with no astroids being found in the belt
+					;EVE:QueryEntities[AsteroidList_TotalIRTmp, "CategoryID = 25 && DistanceTo[${EntityIDForDistance}] < ${Math.Calc[${Ship.OptimalMiningRange} + 2000]}"]
+					EVE:QueryEntities[AsteroidList_TotalIRTmp, "CategoryID = 25"]
 				}
 			}
 			else
 			{
-				EVE:QueryEntities[AsteroidList_TotalIRTmp, "CategoryID = 25 && Distance < ${This.MaxTravelDistanceToAsteroid}"]
+				; below is commented out to try to find the issue with no astroids being found in the belt
+				;EVE:QueryEntities[AsteroidList_TotalIRTmp, "CategoryID = 25 && Distance < ${This.MaxTravelDistanceToAsteroid}"]
+				EVE:QueryEntities[AsteroidList_TotalIRTmp, "CategoryID = 25"]
 			}
 
 			if ${Config.Miner.StripMine}
